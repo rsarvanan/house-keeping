@@ -21,6 +21,22 @@ current_version() {
 	fi
 }
 
+list_versions() {
+	return current_version
+}
+
+upgrade() {
+	return 0
+}
+
+uninstall() {
+	return 0
+}
+
+tags() {
+	echo "install-tool brew"
+}
+
 case $1 in
 	--install-if-required)
 		check_if_installed
@@ -32,8 +48,23 @@ case $1 in
 			echo "Command 'brew' is already installed with version $(current_version)"
 		fi
 		;;
+	--install)
+		install
+		;;
 	--current-version)
 		current_version
+		;;
+	--list-versions)
+		list_versions
+		;;
+	--upgrade)
+		upgrade
+		;;
+	--uninstall)
+		uninstall
+		;;
+	--tags)
+		tags
 		;;
 	*)
 		echo "Invalid command"
